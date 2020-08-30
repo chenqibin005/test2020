@@ -1,0 +1,5 @@
+com\liko\dao\StudentDao.class
+com\liko\entity\Student.class
+com\liko\MaApp.class
+com\liko\util\test01.class
+com\liko\util\Mybatis.class

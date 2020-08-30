@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <!--引用外部配置文件配置mysql环境-->
+   <properties resource="jdbc.properties"/>
+    <!--mybatis日志-->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+    <typeAliases>
+            <!--配置别名-->
+        <typeAlias type="com.liko.entity.Student" alias="stu"/>
+        <package name="com.liko.entity"/>
+    </typeAliases>
+
+        <!--配置插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"/>
+
+    </plugins>
+        <!--配置环境-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+
+<!--        <mapper resource="com\liko\dao\StudentDao.xml"/>-->
+        <!--一次性加载所有的mapper文件
+            mapper文件名称需要和接口名称一致
+            mapper文件和dao在同一目录下
+        -->
+        <package name="com.liko.dao"/>
+
+    </mappers>
+</configuration>
